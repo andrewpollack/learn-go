@@ -6,7 +6,9 @@ import "fmt"
 Encoding information using iota
 */
 const (
-	dogOwner = 1 << (iota + 1)
+	errorFlag = 1 << iota
+
+	dogOwner
 	catOwner
 	birdOwner
 	lizardOwner
