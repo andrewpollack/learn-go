@@ -6,3 +6,7 @@ When thinking on new languages to learn, one that keeps coming up for me is Go (
 
 ## End Project / Goal
 My end project / goal is to use Go to write some sort of backend service. One idea I have is to have a server that can act as an in-memory cache for various clients to GET/SET, and to enforce thread safety throughout. Another idea is to use a framework (such as Gin) to act as a backend for a full-stack app. I may come up with an entirely different project in a bit of time, so it'll be important to stay open to all ideas!
+
+## General Notes for Self
+- Passed by Value: Primitives, Arrays, Structs
+- Passed by Reference: Slices, Maps, Pointers
