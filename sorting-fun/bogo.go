@@ -39,7 +39,7 @@ func MakeRange(min int, max int) []int {
 
 // ShuffleArray will shuffle the array in place. O(n)
 func ShuffleArray(a []int) {
-	for i := 0; i < len(a); i++ {
+	for i := range a {
 		// Number between [i,len(a))
 		swapInd := rand.Intn(len(a)-i) + i
 		a[swapInd], a[i] = a[i], a[swapInd]
