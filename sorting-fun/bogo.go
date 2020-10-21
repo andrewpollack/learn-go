@@ -8,19 +8,23 @@ import (
 
 func main() {
 	rand.Seed(time.Now().UnixNano()) // Always set the seed (semi) randomly!!
-	maxArrSize := 12
+	maxArrSize := 10
+	numTries := 1000
 
 	for arrSize := 1; arrSize < maxArrSize; arrSize++ {
-		attempts := 0
+		var attempts float64 = 0
 
-		a := MakeRange(1, arrSize)
-		ShuffleArray(a)
-
-		for !IsInOrder(a) {
+		for tries := 0; tries < numTries; tries++ {
+			// Going for an average over many tries to avoid outlier results
+			a := MakeRange(1, arrSize)
 			ShuffleArray(a)
-			attempts++
+
+			for !IsInOrder(a) {
+				ShuffleArray(a)
+				attempts++
+			}
 		}
-		fmt.Printf("Array size %v took %v attempts to sort\n", arrSize, attempts)
+		fmt.Printf("Array size %v took on average %.0f attempts to sort\n", arrSize, attempts/float64(numTries))
 	}
 }
 
