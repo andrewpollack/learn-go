@@ -25,12 +25,19 @@ func isUnique(word string) bool {
 }
 
 func main() {
-	TestCaseOne := TestCase{isUnique, "cat", true}
-	TestCaseTwo := TestCase{isUnique, "caat", false}
-	TestCaseThree := TestCase{isUnique, "", true}
+	var tests []TestCase
+	tests = append(tests, TestCase{isUnique, "cat", true})
+	tests = append(tests, TestCase{isUnique, "dog", true})
+	tests = append(tests, TestCase{isUnique, "thequickbrownfoxjumpedoverthelazydog", false})
+	tests = append(tests, TestCase{isUnique, "caat", false})
+	tests = append(tests, TestCase{isUnique, "", true})
 
-	fmt.Printf("Desired: %v, Output: %v\n", TestCaseOne.output, TestCaseOne.exec(TestCaseOne.input))
-	fmt.Printf("Desired: %v, Output: %v\n", TestCaseTwo.output, TestCaseTwo.exec(TestCaseTwo.input))
-	fmt.Printf("Desired: %v, Output: %v\n", TestCaseThree.output, TestCaseThree.exec(TestCaseThree.input))
-
+	for _, test := range tests {
+		desired := test.output
+		actual := test.exec(test.input)
+		if desired != actual {
+			panic(fmt.Sprintf("Test case failed. Desired: %v, Actual: %v", desired, actual))
+		}
+	}
+	fmt.Println("All tests passed.")
 }
